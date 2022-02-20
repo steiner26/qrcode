@@ -9,10 +9,10 @@ import java.util.List;
  */
 class Register {
 
-    /* The current value of this register */
+    /** The current value of this register */
     private GF256Number value;
 
-    /* The input value of this register, to be set at the next clock pulse */
+    /** The input value of this register, to be set at the next clock pulse */
     private GF256Number nextValue;
 
     /**

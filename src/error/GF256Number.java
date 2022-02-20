@@ -7,23 +7,23 @@ package error;
  */
 public class GF256Number {
 
-    /* Modulus used in modulo 100011101 arithmetic, equal to decimal 285 */
+    /** Modulus used in modulo 100011101 arithmetic, equal to decimal 285 */
     private static final int MODULUS = 285;
 
-    /* Galois Field value of 256 */
+    /** Galois Field value of 256 */
     private static final int GALOIS_FIELD_VALUE = 256;
 
-    /* Lookup array by power. Note that the powers of 0 and 255 both have a value of 1 */
+    /** Lookup array by power. Note that the powers of 0 and 255 both have a value of 1 */
     private static final GF256Number[] numbersByPower = generateNumbersByPower();
 
-    /* Lookup array by value. Note that the value of 0 has an undefined power */
+    /** Lookup array by value. Note that the value of 0 has an undefined power */
     private static final GF256Number[] numbersByValue = generateNumbersByValue();
 
 
-    /* The value of this number, between 0 and 255 inclusive */
+    /** The value of this number, between 0 and 255 inclusive */
     private int value;
 
-    /* The positive power of 2 such that 2^power = value in GF(256) modulo 100011101 arithmetic */
+    /** The positive power of 2 such that 2^power = value in GF(256) modulo 100011101 arithmetic */
     private int power;
 
     /**
