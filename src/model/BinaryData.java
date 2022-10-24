@@ -24,6 +24,49 @@ public class BinaryData {
     }
 
     /**
+     * The size of this binary data in bits
+     *
+     * @return The size of this binary data in bits
+     */
+    public int size() {
+        return size;
+    }
+
+    /**
+     * Whether a given bit is set to a binary 1
+     *
+     * @param index The index to check whether the bit is set
+     * @return true if the bit is 1, false if the bit is 0
+     */
+    public boolean isBitSet(int index) {
+        assertIndexInRange(index);
+        return bits.get(index);
+    }
+
+    public void xorBit(int index, boolean value) {
+        assertIndexInRange(index);
+        bits.set(index, bits.get(index) ^ value);
+    }
+
+    public void andBit(int index, boolean value) {
+        assertIndexInRange(index);
+        bits.set(index, bits.get(index) & value);
+
+    }
+
+    public void orBit(int index, boolean value) {
+        assertIndexInRange(index);
+        bits.set(index, bits.get(index) | value);
+
+    }
+
+    public void notBit(int index) {
+        assertIndexInRange(index);
+        bits.set(index, !bits.get(index));
+
+    }
+
+    /**
      * Append an int to the end of this BinaryData
      *
      * @param value The value of the int to be appended
@@ -76,5 +119,33 @@ public class BinaryData {
             result.add((int) b);
         }
         return result;
+    }
+
+    /**
+     * Get a list of 0s and 1s that represents each individual bit in this binary data.
+     * This list can be modified
+     *
+     * @return A list of 0s and 1s representing each bit of the binary data
+     */
+    public List<Integer> toBitList() {
+        List<Integer> bitList  = new ArrayList<>(size);
+        for (int i = 0; i < size; i++) {
+            bitList.add(bits.get(i) ? 1 : 0);
+        }
+        return bitList;
+    }
+
+    @Override
+    public String toString() {
+        return "BinaryData{" +
+                "bits=" + bits +
+                ", size=" + size +
+                '}';
+    }
+
+    private void assertIndexInRange(int index) {
+        if (index >= size) {
+            throw new IndexOutOfBoundsException(String.format("Index %s is out of bounds", index));
+        }
     }
 }

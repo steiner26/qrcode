@@ -14,8 +14,10 @@ public enum Mode {
     FNC1_FIRST_POSITION(0b0101),
     FNC1_SECOND_POSITION(0b1001);
 
+    public static final int INDICATOR_LENGTH_IN_BITS = 4;
+
     /** The 4-bit indicator for this mode */
-    private int indicator;
+    private final int indicator;
 
     /** Character count indicator lengths for short, medium and long */
     private int shortLength;

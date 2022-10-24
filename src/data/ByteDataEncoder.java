@@ -18,7 +18,7 @@ public class ByteDataEncoder implements DataEncoder {
     @Override
     public List<Integer> encode(List<Integer> data, Version version) {
         BinaryData binaryData = new BinaryData();
-        binaryData.appendInt(getMode().getIndicator(), 4);
+        binaryData.appendInt(getMode().getIndicator(), Mode.INDICATOR_LENGTH_IN_BITS);
         binaryData.appendInt(data.size(), version.getCharacterCountIndicatorLength(getMode()));
 
         for (int i : data) {
